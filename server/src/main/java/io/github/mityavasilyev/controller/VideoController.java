@@ -82,7 +82,7 @@ public class VideoController {
     }
 
     // Simulate transcoding process, in real world it would be done in a separate thread or service
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRate = 30000)
     public synchronized void transcodeVideos() throws IOException {
         try (Stream<Path> paths = Files.list(Paths.get(UPLOAD_DIR))) {
             List<String> filesToTranscode = paths
