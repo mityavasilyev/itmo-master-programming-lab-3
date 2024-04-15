@@ -14,20 +14,32 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build and Start Services
+      - name: Build Docker Images
         run: |
-          docker-compose up --build -d
-          echo "Waiting for services to start..."
-          sleep 10 # Adjust the sleep time as needed
-      
-      - name: Install Playwright in Frontend Container
-        run: |
-          docker-compose exec -T frontend npx playwright install
+          cd server
+          docker build -t server:latest .
+          cd ../frontend
+          docker build -t frontend:latest .
 
-      - name: Install Playwright dependencies for browser simulation
+      - name: Run frontend app
         run: |
-          docker-compose exec -T frontend npx playwright install-deps  
+          docker run -d --network=host -name frontend frontend:latest
+
+      - name: Run Server in Docker
+        run: |
+            docker run -d --network=host --name server server:latest
+            
+            echo "Waiting for server to start..."
+            for i in {1..10}; do
+              if nc -z localhost 8080; then
+                echo "Server is up."
+                break
+              else
+                echo "Waiting... $i"
+                sleep 5
+              fi
+            done
 
       - name: Run Tests
         run: |
-          docker-compose exec -T frontend npx playwright test
+          docker exec -it run npx playwright test
