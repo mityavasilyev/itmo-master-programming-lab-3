@@ -15,7 +15,7 @@ test('User creates account, logs in, uploads video, waits for transcoding, and d
     await page.click('button[type="submit"]');
 
     // Wait for navigation to the login page
-    await page.waitForNavigation();
+    await page.waitForNavigation({waitUntil: "load"});
 
     // Fill in the login form
     await page.fill('input[placeholder="Username"]', randomUsername);
@@ -23,7 +23,7 @@ test('User creates account, logs in, uploads video, waits for transcoding, and d
     await page.click('button[type="submit"]');
 
     // Wait for navigation to the video upload page
-    await page.waitForNavigation();
+    await page.waitForNavigation({waitUntil: "load"});
 
     // Upload a video
     const [fileChooser] = await Promise.all([
