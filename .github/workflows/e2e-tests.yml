@@ -42,4 +42,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          docker exec -it run npx playwright test
+          docker exec -it frontend npx playwright test
