@@ -32,8 +32,8 @@ import java.util.stream.Stream;
 @Log4j2
 public class VideoController {
 
-    private static final String UPLOAD_DIR = "uploads/";
-    private static final String TRANSCODE_DIR = "transcodes/";
+    private static final String UPLOAD_DIR = "/app/uploads/";
+    private static final String TRANSCODE_DIR = "/app/transcodes/";
 
     public VideoController() {
         ensureDirectoriesExist();

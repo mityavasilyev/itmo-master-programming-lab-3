@@ -1,0 +1,16 @@
+version: '3'
+services:
+ server:
+    build: ./server
+    image: server:latest
+    volumes:
+      - ./uploads:/app/uploads
+      - ./transcodes:/app/transcodes
+      - ./db:/app/db
+    ports:
+      - 8080:8080
+ frontend:
+    build: ./frontend
+    image: frontend:latest
+    ports:
+      - 3000:3000

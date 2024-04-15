@@ -2,7 +2,8 @@ spring:
   application:
     name: itmo-masters-programming-lab-3
   datasource:
-    url: jdbc:sqlite:transcoder.db
+#    url: jdbc:sqlite:transcoder.db #for local
+    url: jdbc:sqlite:/app/db/transcoder.db
     driver-class-name: org.sqlite.JDBC
   jpa:
     database-platform: org.hibernate.community.dialect.SQLiteDialect
