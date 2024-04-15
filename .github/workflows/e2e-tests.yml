@@ -22,4 +22,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          docker-compose exec frontend npx playwright test
+          docker-compose exec -T frontend npx playwright test
