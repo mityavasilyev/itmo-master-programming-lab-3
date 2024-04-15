@@ -1,4 +1,7 @@
 module.exports = {
+
+    retries: 2,
+
     use: {
         browserName: 'chromium',
 

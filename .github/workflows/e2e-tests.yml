@@ -28,6 +28,6 @@ jobs:
         run: |
           docker-compose exec -T frontend npx playwright install-deps  
 
-      - name: Run Tests
+      - name: Run Playwright tests
         run: |
-          docker-compose exec -T frontend npx playwright test
+          docker run --rm -v $(pwd):/tests -w /tests mcr.microsoft.com/playwright:v1.14.1-focal npx playwright test
