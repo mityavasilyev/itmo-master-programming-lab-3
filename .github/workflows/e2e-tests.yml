@@ -23,11 +23,11 @@ jobs:
 
       - name: Run frontend app
         run: |
-          docker run -d --network=host --name frontend frontend:latest
+          docker run -d --network=host --name frontend -p 3000:3000 frontend:latest
 
       - name: Run Server in Docker
         run: |
-            docker run -d --network=host --name server server:latest
+            docker run -d --name server --network=host -v $(pwd)/uploads:/app/uploads -v $(pwd)/transcodes:/app/transcodes -v $(pwd)/db:/app/db -p 8080:8080 server:latest
             
             echo "Waiting for server to start..."
             for i in {1..10}; do
