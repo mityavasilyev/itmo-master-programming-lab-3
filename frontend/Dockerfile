@@ -18,5 +18,7 @@ EXPOSE 3000
 
 RUN npx playwright install
 
+RUN npx playwright install-deps
+
 # Run the app when the container launches
 CMD ["npm", "start"]

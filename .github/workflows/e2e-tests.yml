@@ -23,7 +23,7 @@ jobs:
 
       - name: Run frontend app
         run: |
-          docker run -d --network=host -name frontend frontend:latest
+          docker run -d --network=host --name frontend frontend:latest
 
       - name: Run Server in Docker
         run: |
