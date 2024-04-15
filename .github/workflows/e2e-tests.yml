@@ -19,6 +19,10 @@ jobs:
           docker-compose up --build -d
           echo "Waiting for services to start..."
           sleep 10 # Adjust the sleep time as needed
+      
+      - name: Install Playwright in Frontend Container
+        run: |
+          docker-compose exec -T frontend npx playwright install
 
       - name: Run Tests
         run: |
